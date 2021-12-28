@@ -1,0 +1,48 @@
+.game {
+    width: 30%;
+    transition: all 200ms ease;
+}
+.game:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.226);
+}
+
+.game:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.226);
+}
+
+.game::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* border-radius: inherit; */
+    background-color: rgba(11, 34, 138, 0.466);
+    transform: rotate(-80deg) scale(2) translateY(-120%);
+    transition: transform 350ms ease;
+    mix-blend-mode: darken;
+}
+.game:hover::before {
+    transform: rotate(-80deg) scale(2) translateY(0);
+}
+
+/* .gameName {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    transition: transform 300ms ease, all 200ms ease 250ms;
+} */
+.hoverSection {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-100%);
+    transition: transform 300ms ease, all 200ms ease 250ms;
+}
+.game:hover .hoverSection {
+    transform: translateY(0);
+}

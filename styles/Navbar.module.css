@@ -1,0 +1,29 @@
+.navbar {
+    width: 16%;
+}
+
+.navLink {
+    transition: all 180ms ease;
+    cursor: pointer;
+}
+.navLink:hover {
+    background-color: white;
+    color: #8b2be2;
+}
+
+.divider {
+    width: 90%;
+    height: 1px;
+    background-color: rgb(228, 228, 228);
+}
+
+.follow {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    transition: all 150ms ease;
+}
+.follow:hover {
+    background-color: white;
+    color: #8b2be2;
+}
