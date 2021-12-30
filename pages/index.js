@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
-import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import Divider from "../components/Divider";
 import LatestGame from "../components/LatestGame";
 import Head from "next/head";
@@ -17,8 +17,6 @@ export default function Home({ games, regular }) {
         document.querySelector(".gamesContainer").scrollLeft += 400;
     };
 
-    console.log(games[0]);
-
     return (
         <>
             <Head>
@@ -32,9 +30,15 @@ export default function Home({ games, regular }) {
             <div
                 className={`w-full py-7 px-6 rounded-xl ${styles.homeMainContent}`}
             >
-                <h2 className="text-4xl font-groches text-white mb-2 ">
-                    Latest Games
-                </h2>
+                <div className="flex justify-between items-center">
+                    <h2 className="text-4xl font-groches text-white mb-2 w-max">
+                        Latest Games
+                    </h2>
+                    <h1 className="w-max font-poppins font-bold text-sm text-purple hover:underline transition-all duration-200 ease-in">
+                        <Link href="/seemore">see more</Link>
+                    </h1>
+                </div>
+
                 <div
                     className={`flex overflow-auto p-4 gap-5 relative gamesContainer ${styles.gamesContainer}`}
                 >
@@ -45,22 +49,23 @@ export default function Home({ games, regular }) {
                             img={game.thumbnail}
                             name={game.title}
                             genre={game.genre}
+                            platform={game.platform}
                         />
                     ))}
                 </div>
 
-                <div className="flex items-center justify-center gap-3 mt-3">
+                <div className="flex items-center justify-center gap-5 mt-3 w-full text-black">
                     <button
                         onClick={scrollLeft}
-                        className={`p-2 rounded-full ${styles.leftArr}`}
+                        className={`p-2 ${styles.leftArr}`}
                     >
-                        <BsArrowLeft className={`text-xl`} />
+                        <BsChevronLeft style={{ fontSize: "25px" }} />
                     </button>
                     <button
                         onClick={scrollRight}
-                        className={`p-2 rounded-full ${styles.rightArr}`}
+                        className={`p-2 ${styles.rightArr}`}
                     >
-                        <BsArrowRight className={`text-xl`} />
+                        <BsChevronRight style={{ fontSize: "25px" }} />
                     </button>
                 </div>
 
@@ -93,5 +98,6 @@ export const getStaticProps = async () => {
             games: [...data.slice(0, 31)],
             regular: [...regular.data.slice(0, 41)],
         },
+        revalidate: 86400,
     };
 };

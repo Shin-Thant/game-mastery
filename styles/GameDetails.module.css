@@ -1,0 +1,186 @@
+.gameContainer {
+    --original: 530px;
+    --hover: 130px;
+    --height: 330px;
+
+    background-image: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.4)
+    );
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.playBtn {
+    background-color: transparent;
+    border: 1px solid black;
+    position: relative;
+    border-radius: 5px;
+}
+.playBtn::before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    width: 100%;
+    height: 100%;
+    background-color: #8b2be2;
+    border-radius: 5px;
+    z-index: -1;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+.playBtn:hover::before {
+    top: 0;
+    left: 0;
+}
+
+.gameImg {
+    width: 45%;
+}
+.img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.content {
+    width: 53%;
+}
+
+.seeMore {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(212, 0, 255, 0),
+        rgba(212, 0, 255, 0.7)
+    );
+}
+
+.requirements {
+    width: 40%;
+    border: 1px solid white;
+    background-color: transparent;
+    transition: all 250ms ease;
+}
+.requirements span {
+    transition: all 200ms ease;
+}
+.requirements:hover {
+    background-color: rgba(255, 255, 255);
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.226);
+    color: #8b2be2;
+}
+
+.short {
+    width: 37%;
+}
+.ssContainer {
+    width: 62%;
+    scroll-behavior: smooth;
+}
+.ssContainer::-webkit-scrollbar {
+    display: none;
+}
+.gameSs {
+    width: var(--hover);
+    min-width: var(--hover);
+    height: 330px;
+    overflow: hidden;
+    transition: all 400ms ease;
+}
+.gameSsImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.activeGameSs {
+    width: var(--original);
+    min-width: var(--original);
+    height: 330px;
+    transition: all 400ms ease;
+}
+
+.leftBtn,
+.rightBtn {
+    position: relative;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+.leftBtn::before,
+.rightBtn::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    background-color: white;
+    pointer-events: none;
+    z-index: -1;
+    transition: all 0.2s ease;
+}
+
+.leftBtn:hover::before {
+    top: 0;
+    left: 0;
+}
+.rightBtn:hover::before {
+    top: 0;
+    left: 0;
+}
+
+.description {
+    width: 75%;
+    margin: auto;
+    border-radius: 10px;
+    padding: 2.5rem;
+    position: relative;
+}
+
+.description::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    padding: 2.5rem;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 10px;
+    z-index: 2;
+    pointer-events: none;
+    transition: right 300ms ease, top 300ms ease, z-index 500ms ease;
+}
+.description::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition: width 200ms ease;
+    pointer-events: none;
+}
+
+.originalDesc {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.description:hover::before {
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+.description:hover::after {
+    width: 100%;
+}

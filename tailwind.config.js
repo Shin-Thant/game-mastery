@@ -2,6 +2,8 @@ module.exports = {
     content: [
         "./pages/_app.js",
         "./pages/index.js",
+        "./pages/seemore.js",
+        "./pages/gameDetails/[id].js",
         "./components/Navbar.js",
         "./components/Layout.js",
         "./components/LatestGame.js",
