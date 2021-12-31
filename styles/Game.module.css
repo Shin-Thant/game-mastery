@@ -19,12 +19,12 @@
     height: 100%;
     /* border-radius: inherit; */
     background-color: rgba(11, 34, 138, 0.466);
-    transform: rotate(-80deg) scale(2) translateY(-120%);
+    transform: rotate(-70deg) scale(2) translateY(-120%);
     transition: transform 350ms ease;
     mix-blend-mode: darken;
 }
 .game:hover::before {
-    transform: rotate(-80deg) scale(2) translateY(0);
+    transform: rotate(-70deg) scale(2) translateY(0);
 }
 
 /* .gameName {

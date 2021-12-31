@@ -4,7 +4,6 @@
         rgba(255, 255, 255, 0.7),
         rgba(255, 255, 255, 0.4)
     );
-    /* background-color: rgba(255, 255, 255, 0.6); */
     backdrop-filter: blur(10px);
     z-index: 100;
 }
@@ -21,15 +20,15 @@
     position: relative;
     width: 40px;
     height: 40px;
-    background-color: transparent;
-    border: 2px solid white;
-    color: white;
-    overflow: hidden;
-    z-index: 5;
-    transition: all 200ms ease;
+    /* background-color: transparent; */
+    border: 1px solid rgb(0, 0, 0);
+    /* overflow: hidden; */
+    /* z-index: 5; */
+    transition: all 0.2s ease;
+    border-radius: 3px;
 }
 
-.leftArr::before {
+/* .leftArr::before {
     content: "";
     position: absolute;
     top: 0;
@@ -65,4 +64,24 @@
 }
 .rightArr:hover {
     color: #8800ff;
+} */
+
+.leftArr::before,
+.rightArr::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    background-color: white;
+    z-index: -1;
+    transition: all 0.2s ease;
+}
+
+.leftArr:hover::before,
+.rightArr:hover::before {
+    top: 0;
+    left: 0;
 }

@@ -1,6 +1,6 @@
 .game {
-    width: max-content;
-    min-width: max-content;
+    width: 380px;
+    min-width: 380px;
     background-color: rgba(255, 255, 255, 0.3);
     transition: all 200ms ease;
 }
@@ -21,12 +21,12 @@
     height: 100%;
     /* border-radius: inherit; */
     background-color: rgba(11, 34, 138, 0.466);
-    transform: rotate(-80deg) scale(2) translateY(-120%);
+    transform: rotate(-70deg) scale(2) translateY(-120%);
     transition: transform 350ms ease;
     mix-blend-mode: darken;
 }
 .gameImg:hover::before {
-    transform: rotate(-80deg) scale(2) translateY(0);
+    transform: rotate(-70deg) scale(2) translateY(0);
 }
 
 .detailsBtn {
