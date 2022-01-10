@@ -6,7 +6,7 @@ import Head from "next/head";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { HiArrowNarrowLeft } from "react-icons/hi";
 
-function gameDetails({ game }) {
+export default function gameDetails({ game }) {
     const [activeImg, setActiveImg] = useState(0);
 
     const [readMore, setReadMore] = useState(false);
@@ -314,5 +314,3 @@ export const getStaticPaths = async () => {
         fallback: false,
     };
 };
-
-export default gameDetails;

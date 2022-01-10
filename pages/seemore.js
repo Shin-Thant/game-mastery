@@ -6,7 +6,7 @@ import { HiArrowNarrowLeft } from "react-icons/hi";
 import Game from "../components/Game";
 import { useRouter } from "next/router";
 
-function SeeMorePage({ games }) {
+export default function SeeMorePage({ games }) {
     const [count, setCount] = useState(40);
 
     const router = useRouter();
@@ -67,8 +67,6 @@ function SeeMorePage({ games }) {
         </>
     );
 }
-
-export default SeeMorePage;
 
 export const getStaticProps = async () => {
     const { data } = await axios.get(
