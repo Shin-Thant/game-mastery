@@ -27,11 +27,6 @@
     transform: rotate(-70deg) scale(2) translateY(0);
 }
 
-.gameImg {
-    width: 100%;
-    object-fit: cover;
-}
-
 .hoverSection {
     position: absolute;
     top: 0;
@@ -45,21 +40,19 @@
     transform: translateY(0);
 }
 
-@media screen and (max-width: 1235px) {
+@media screen and (max-width: 930px) {
     .game {
         width: 45%;
+    }
+    .gameImg {
+        width: 100%;
+        object-fit: cover;
     }
 }
 
 @media screen and (max-width: 650px) {
     .game {
         width: 75%;
-    }
-}
-
-@media screen and (max-width: 550px) {
-    .game {
-        width: 80%;
     }
 }
 

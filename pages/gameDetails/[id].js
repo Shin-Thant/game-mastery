@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "../../styles/GameDetails.module.css";
 import { useRouter } from "next/router";
@@ -8,6 +8,8 @@ import { HiArrowNarrowLeft } from "react-icons/hi";
 
 function gameDetails({ game }) {
     const [activeImg, setActiveImg] = useState(0);
+
+    const [readMore, setReadMore] = useState(false);
 
     const router = useRouter();
 
@@ -23,6 +25,8 @@ function gameDetails({ game }) {
         document.querySelector(".ssContainer").scrollLeft += 490;
     };
 
+    console.log(game?.minimum_system_requirements?.storage);
+
     return (
         <>
             <Head>
@@ -34,7 +38,7 @@ function gameDetails({ game }) {
                 />
             </Head>
             <div
-                className={`w-full py-7 px-6 rounded-xl ${styles.gameContainer}`}
+                className={`w-full py-4 sm:py-7 px-3 sm:px-6 rounded-xl ${styles.gameContainer}`}
             >
                 <div
                     onClick={goBack}
@@ -43,7 +47,9 @@ function gameDetails({ game }) {
                     <HiArrowNarrowLeft style={{ fontSize: "30px" }} />
                 </div>
 
-                <div className="flex justify-between w-full gap-8">
+                <div
+                    className={`flex justify-between w-full gap-5 xl:gap-8 ${styles.detailsHeader}`}
+                >
                     <div
                         className={`h-max rounded-xl overflow-hidden ${styles.gameImg}`}
                     >
@@ -65,7 +71,7 @@ function gameDetails({ game }) {
                                 {game.platform}
                             </div>
                         </div>
-                        <h2 className="font-groches text-5xl mb-3">
+                        <h2 className="font-groches text-4xl md:text-5xl mb-3">
                             {game.title}
                         </h2>
 
@@ -105,12 +111,12 @@ function gameDetails({ game }) {
                     style={{ height: "1px" }}
                 ></div>
 
-                <div className="flex items-center justify-between">
-                    <div
-                        className={`flex flex-col items-center gap-5 ${styles.short}`}
-                    >
+                <div
+                    className={`w-full flex justify-center screenshorts:justify-between screenshorts:items-center ${styles.imagesAndContent}`}
+                >
+                    <div className={`flex items-center gap-5 ${styles.short}`}>
                         <p className="text-3xl font-groches text-white text-center">
-                            {game.short_description}
+                            &nbsp; &nbsp; {game.short_description}
                         </p>
                         <div className="flex items-center gap-7">
                             <button
@@ -128,7 +134,7 @@ function gameDetails({ game }) {
                         </div>
                     </div>
                     <div
-                        className={`flex items-center overflow-auto gap-4 px-5 ssContainer ${styles.ssContainer}`}
+                        className={`h-max flex items-center overflow-auto screenshorts:px-5 ssContainer ${styles.ssContainer}`}
                     >
                         {game.screenshots.map((item, index) => (
                             <div
@@ -155,79 +161,128 @@ function gameDetails({ game }) {
                     style={{ height: "1px" }}
                 ></div>
 
-                <div>
-                    <h2 className="text-4xl text-center font-groches text-white mb-8">
-                        Minimum Requirements
-                    </h2>
-                    <div className="w-full flex justify-center flex-wrap gap-5">
-                        <div
-                            className={`text-white font-poppins flex flex-col justify-center items-center p-7 rounded-xl gap-5 ${styles.requirements}`}
-                        >
-                            <span className={`text-4xl font-groches`}>OS</span>
-                            <span className="text-base text-center font-bold">
-                                {game.minimum_system_requirements.os}
-                            </span>
+                {game?.minimum_system_requirements && (
+                    <>
+                        <div>
+                            <h2 className="text-3xl md:text-4xl text-center font-groches text-white mb-8">
+                                Minimum Requirements
+                            </h2>
+                            <div className="w-full flex justify-center flex-wrap gap-5">
+                                <div
+                                    className={`text-white font-poppins flex flex-col justify-center items-center p-7 rounded-xl gap-5 ${styles.requirements}`}
+                                >
+                                    <span
+                                        className={`text-3xl font-groches transition-colors duration-100 ease-linear`}
+                                    >
+                                        OS
+                                    </span>
+                                    <span className="text-base text-center font-bold transition-colors duration-100 ease-linear">
+                                        {game.minimum_system_requirements.os
+                                            ? game?.minimum_system_requirements
+                                                  ?.os
+                                            : "---"}
+                                    </span>
+                                </div>
+                                <div
+                                    className={`text-white font-poppins flex flex-col justify-center items-center p-7 rounded-xl gap-5 ${styles.requirements}`}
+                                >
+                                    <span
+                                        className={`text-3xl font-groches transition-colors duration-100 ease-linear`}
+                                    >
+                                        Processor
+                                    </span>
+                                    <span className="text-base text-center font-bold transition-colors duration-100 ease-linear">
+                                        {game.minimum_system_requirements
+                                            .processor
+                                            ? game?.minimum_system_requirements
+                                                  ?.processor
+                                            : "---"}
+                                    </span>
+                                </div>
+                                <div
+                                    className={`text-white font-poppins flex flex-col justify-center items-center p-7 rounded-xl gap-5 ${styles.requirements}`}
+                                >
+                                    <span
+                                        className={`text-3xl font-groches transition-colors duration-100 ease-linear`}
+                                    >
+                                        Memory
+                                    </span>
+                                    <span className="text-base text-center font-bold transition-colors duration-100 ease-linear">
+                                        {game.minimum_system_requirements.memory
+                                            ? game?.minimum_system_requirements
+                                                  ?.memory
+                                            : "---"}
+                                    </span>
+                                </div>
+                                <div
+                                    className={`text-white font-poppins flex flex-col justify-center items-center p-7 rounded-xl gap-5 ${styles.requirements}`}
+                                >
+                                    <span
+                                        className={`text-3xl font-groches transition-colors duration-100 ease-linear`}
+                                    >
+                                        Graphics
+                                    </span>
+                                    <span className="text-base text-center font-bold transition-colors duration-100 ease-linear">
+                                        {game.minimum_system_requirements
+                                            .graphics
+                                            ? game?.minimum_system_requirements
+                                                  ?.graphics
+                                            : "---"}
+                                    </span>
+                                </div>
+                                <div
+                                    className={`text-white font-poppins flex flex-col justify-center items-center p-7 rounded-xl gap-5 ${styles.requirements}`}
+                                >
+                                    <span
+                                        className={`text-3xl font-groches transition-colors duration-100 ease-linear`}
+                                    >
+                                        Storage
+                                    </span>
+                                    <span className="text-base text-center font-bold transition-colors duration-100 ease-linear">
+                                        {game.minimum_system_requirements
+                                            .storage &&
+                                        game.minimum_system_requirements
+                                            .storage !== "?"
+                                            ? game?.minimum_system_requirements
+                                                  ?.storage
+                                            : "---"}
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                         <div
-                            className={`text-white font-poppins flex flex-col justify-center items-center p-7 rounded-xl gap-5 ${styles.requirements}`}
-                        >
-                            <span className={`text-4xl font-groches`}>
-                                Processor
-                            </span>
-                            <span className="text-base text-center font-bold">
-                                {game.minimum_system_requirements.processor}
-                            </span>
-                        </div>
-                        <div
-                            className={`text-white font-poppins flex flex-col justify-center items-center p-7 rounded-xl gap-5 ${styles.requirements}`}
-                        >
-                            <span className={`text-4xl font-groches`}>
-                                Memory
-                            </span>
-                            <span className="text-base text-center font-bold">
-                                {game.minimum_system_requirements.memory}
-                            </span>
-                        </div>
-                        <div
-                            className={`text-white font-poppins flex flex-col justify-center items-center p-7 rounded-xl gap-5 ${styles.requirements}`}
-                        >
-                            <span className={`text-4xl font-groches`}>
-                                Graphics
-                            </span>
-                            <span className="text-base text-center font-bold">
-                                {game.minimum_system_requirements.graphics}
-                            </span>
-                        </div>
-                        <div
-                            className={`text-white font-poppins flex flex-col justify-center items-center p-7 rounded-xl gap-5 ${styles.requirements}`}
-                        >
-                            <span className={`text-4xl font-groches`}>
-                                Storage
-                            </span>
-                            <span className="text-base text-center font-bold">
-                                {game.minimum_system_requirements.storage}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    className="my-16 w-11/12 mx-auto bg-white"
-                    style={{ height: "1px" }}
-                ></div>
+                            className="my-16 w-11/12 mx-auto bg-white"
+                            style={{ height: "1px" }}
+                        ></div>{" "}
+                    </>
+                )}
 
                 <div className={`w-full mb-10`}>
-                    <h2 className="text-white font-groches text-4xl mb-8 text-center w-full">
+                    <h2 className="text-white font-groches text-3xl md:text-4xl mb-5 sm:mb-10 text-center w-full">
                         Description
                     </h2>
-                    <p
-                        data-text={game.description}
-                        className={`font-poppins text-base font-semibold text-violet-800 w-full relative ${styles.description}`}
+                    <div
+                        className={`font-poppins text-sm mobile:text-base font-semibold text-violet-800 w-full relative transition-all duration-300 ease-linear ${
+                            styles.description
+                        } ${readMore && styles.activeDescription}`}
                     >
-                        <span className={`${styles.originalDesc}`}>
+                        <span className={`w-full`}>
                             {game.description}
+                            <div
+                                onClick={() => setReadMore(false)}
+                                className={`w-max text-center cursor-pointer mt-3 border-2 border-purple rounded px-2 py-1 mx-auto ${styles.readLess}`}
+                            >
+                                See Less!
+                            </div>
                         </span>
-                    </p>
+
+                        <span
+                            onClick={() => setReadMore(true)}
+                            className={`text-purple font-poppins bg-white border-2 border-purple rounded px-2 py-1 ${styles.readMore}`}
+                        >
+                            See More!
+                        </span>
+                    </div>
                 </div>
             </div>
         </>

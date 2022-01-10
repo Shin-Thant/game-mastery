@@ -1,16 +1,24 @@
 import axios from "axios";
 import Head from "next/head";
-import React from "react";
+import React, { useState } from "react";
 import styles from "../styles/MoreGames.module.css";
 import { HiArrowNarrowLeft } from "react-icons/hi";
 import Game from "../components/Game";
 import { useRouter } from "next/router";
 
 function seemore({ games }) {
+    const [count, setCount] = useState(40);
+
     const router = useRouter();
 
     const goBack = () => {
         router.back();
+    };
+
+    const loadMore = () => {
+        if (count < games.length) {
+            setCount(count + 30);
+        }
     };
 
     return (
@@ -32,15 +40,29 @@ function seemore({ games }) {
                 </h2>
 
                 <div className="flex flex-wrap justify-center gap-5">
-                    {games?.map((game) => (
-                        <Game
-                            key={game.id}
-                            id={game.id}
-                            img={game.thumbnail}
-                            name={game.title}
-                        />
-                    ))}
+                    {games?.map(
+                        (game, index) =>
+                            index < count && (
+                                <Game
+                                    key={game.id}
+                                    id={game.id}
+                                    img={game.thumbnail}
+                                    name={game.title}
+                                />
+                            )
+                    )}
                 </div>
+
+                {count < games.length && (
+                    <div className="w-full flex justify-center mt-8 mb-2">
+                        <button
+                            onClick={loadMore}
+                            className="w-max px-3 py-1 font-poppins font-semibold text-base bg-violet-700 text-white rounded-md hover:bg-violet-800 focus:bg-violet-800 transition-colors duration-150 ease-linear"
+                        >
+                            Load More
+                        </button>
+                    </div>
+                )}
             </div>
         </>
     );
@@ -55,7 +77,7 @@ export const getStaticProps = async () => {
 
     return {
         props: {
-            games: [...data.slice(0, 40)],
+            games: data,
         },
         revalidate: 86400,
     };

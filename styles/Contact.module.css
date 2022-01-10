@@ -1,0 +1,162 @@
+.contactContainer {
+    background-image: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.4)
+    );
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    scroll-behavior: smooth;
+    padding-inline: 1.3rem;
+}
+
+.header {
+    position: relative;
+}
+.header::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 103%;
+    height: 55%;
+    transform: translateX(-2%);
+    background-color: #9900ff;
+    z-index: -1;
+}
+
+.contactInfo {
+    width: 25%;
+    border: 2px solid white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    height: 10rem;
+    color: white;
+    transition: all 300ms ease;
+}
+.contactInfo:hover {
+    background-color: white;
+    color: #7500c4;
+    box-shadow: 0 9px 14px rgba(0, 0, 0, 0.1);
+}
+
+.inputs,
+.textArea {
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    font-size: 15px;
+    font-weight: 600;
+}
+.textArea {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.contactInfoContainer {
+    gap: 2rem;
+}
+
+.form {
+    width: 83%;
+}
+
+.nameAndMail {
+    gap: 1rem;
+}
+
+@media screen and (max-width: 1370px) {
+    .contactContainer {
+        padding-inline: 1rem;
+    }
+    .contactInfoContainer {
+        gap: 1.5rem;
+    }
+    .contactInfo {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 1245px) {
+    .form {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 1145px) {
+    .contactContainer {
+        padding-inline: 0.8rem;
+    }
+
+    .contactInfoContainer {
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .form {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 929px) {
+    .contactContainer {
+        padding-bottom: 1.7rem;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .contactInfoContainer {
+        gap: 1.5rem;
+    }
+    .contactInfo {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    .nameAndMail {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 549px) {
+    .contactContainer {
+        padding-inline: 1.2rem;
+    }
+
+    .contactInfoContainer {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .contactInfo {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .contactContainer {
+        padding: 1rem 0.9rem;
+    }
+    .contactInfo {
+        width: 90%;
+    }
+
+    .form {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .contactInfo {
+        width: 100%;
+    }
+}

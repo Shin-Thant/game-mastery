@@ -1,5 +1,18 @@
 .navbar {
-    width: 16%;
+    width: 18%;
+    min-height: 100vh;
+}
+
+.logo {
+    width: 100%;
+}
+
+.bottomNav {
+    width: 100%;
+}
+
+.icons {
+    display: block;
 }
 
 .navLink {
@@ -11,8 +24,12 @@
     color: #8b2be2;
 }
 
+.links {
+    padding: 0.7rem 1.1rem;
+}
+
 .divider {
-    width: 90%;
+    margin: 2.3rem 0;
     height: 1px;
     background-color: rgb(228, 228, 228);
 }
@@ -26,4 +43,87 @@
 .follow:hover {
     background-color: white;
     color: #8b2be2;
+}
+
+@media screen and (max-width: 1260px) {
+    .navbar {
+        width: 20%;
+    }
+
+    .divider {
+        margin: 1.8rem 0;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .navbar {
+        width: 23%;
+    }
+}
+
+@media screen and (max-width: 929px) {
+    .navbar {
+        --length: 0.3rem;
+
+        width: 100%;
+        min-height: max-content;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 13px;
+    }
+
+    .logo {
+        width: max-content;
+    }
+
+    .icons {
+        display: none;
+    }
+
+    .bottomNav {
+        width: 50%;
+    }
+
+    .links {
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .bottomNav {
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 549px) {
+    .navLink {
+        width: max-content;
+    }
+    .bottomNav {
+        position: fixed;
+        bottom: 1rem;
+        left: 50%;
+        width: 70%;
+        transform: translateX(-50%);
+        height: max-content;
+        background-color: rgb(124, 9, 255);
+        backdrop-filter: blur(1rem);
+    }
+
+    .icons {
+        display: block;
+    }
+
+    .logo {
+        width: 100%;
+    }
+
+    .links {
+        padding: 0.6rem 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .bottomNav {
+        width: 80%;
+    }
 }
