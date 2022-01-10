@@ -6,6 +6,7 @@
     );
     backdrop-filter: blur(10px);
     z-index: 100;
+    scroll-behavior: smooth;
 }
 
 .gamesContainer::-webkit-scrollbar {
@@ -28,44 +29,6 @@
     border-radius: 3px;
 }
 
-/* .leftArr::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    transform: translateX(100%);
-    background-color: white;
-    transition: transform 300ms ease;
-    z-index: -1;
-}
-.leftArr:hover::before {
-    transform: translateX(0);
-}
-.leftArr:hover {
-    color: #8800ff;
-}
-
-.rightArr::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: translateX(-100%);
-    background-color: white;
-    transition: transform 300ms ease;
-    z-index: -1;
-}
-.rightArr:hover::before {
-    transform: translateX(0);
-}
-.rightArr:hover {
-    color: #8800ff;
-} */
-
 .leftArr::before,
 .rightArr::before {
     content: "";
@@ -78,10 +41,17 @@
     background-color: white;
     z-index: -1;
     transition: all 0.2s ease;
+    pointer-events: none;
 }
 
 .leftArr:hover::before,
 .rightArr:hover::before {
     top: 0;
     left: 0;
+}
+
+@media screen and (max-width: 930px) {
+    .homeMainContent {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
 }

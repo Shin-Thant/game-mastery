@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import React from "react";
-import styles from "../styles/Game.module.css";
+import styles from "../styles/SearchedGame.module.css";
 
-function Game({ id, img, name }) {
+function SearchedGame({ id, img, name }) {
     const router = useRouter();
 
     return (
@@ -15,7 +15,7 @@ function Game({ id, img, name }) {
                 className={`flex flex-col justify-center items-center gap-3 ${styles.hoverSection}`}
             >
                 <h1
-                    className={`text-white font-groches text-center text-3xl ${styles.gameName}`}
+                    className={`text-white font-groches text-center text-3xl sm:text-4xl ${styles.gameName}`}
                 >
                     {name}
                 </h1>
@@ -30,4 +30,4 @@ function Game({ id, img, name }) {
     );
 }
 
-export default Game;
+export default SearchedGame;

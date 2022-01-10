@@ -19,7 +19,11 @@ function LatestGame({ id, img, name, genre, platform }) {
                 </button>
             </div>
             <div className="flex flex-col items-start gap-2 mt-3">
-                <h1 className={`text-lg font-bold text-purple`}>{name}</h1>
+                <h1
+                    className={`text-base xmobile:text-lg font-bold text-purple`}
+                >
+                    {name}
+                </h1>
                 <div className="w-full flex justify-between items-center font-bold text-sm gap-3">
                     <div className="w-max bg-white text-purple rounded-lg py-1.5 px-3">
                         {platform}

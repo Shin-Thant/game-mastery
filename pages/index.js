@@ -7,14 +7,23 @@ import LatestGame from "../components/LatestGame";
 import Head from "next/head";
 import Link from "next/link";
 import Game from "../components/Game";
+import { useState } from "react";
 
 export default function Home({ games, regular }) {
+    const [count, setCount] = useState(40);
+
     const scrollLeft = () => {
         document.querySelector(".gamesContainer").scrollLeft -= 400;
     };
 
     const scrollRight = () => {
         document.querySelector(".gamesContainer").scrollLeft += 400;
+    };
+
+    const loadMore = () => {
+        if (count < regular.length) {
+            setCount(count + 30);
+        }
     };
 
     return (
@@ -28,10 +37,10 @@ export default function Home({ games, regular }) {
                 />
             </Head>
             <div
-                className={`w-full py-7 px-6 rounded-xl ${styles.homeMainContent}`}
+                className={`w-full p-2 xmobile:p-4 sm:py-7 sm:px-6 rounded-xl ${styles.homeMainContent}`}
             >
-                <div className="flex justify-between items-center">
-                    <h2 className="text-4xl font-groches text-white mb-2 w-max">
+                <div className="flex justify-between items-center px-2">
+                    <h2 className="text-4xl sm:text-4xl font-groches text-white mb-2 w-max">
                         Latest Games
                     </h2>
                     <h1 className="w-max font-poppins font-bold text-sm text-purple hover:underline transition-all duration-200 ease-in">
@@ -40,7 +49,7 @@ export default function Home({ games, regular }) {
                 </div>
 
                 <div
-                    className={`flex overflow-auto p-4 gap-5 relative gamesContainer ${styles.gamesContainer}`}
+                    className={`flex overflow-auto px-2 py-4 xmobile:p-3 sm:p-4 gap-5 relative gamesContainer ${styles.gamesContainer}`}
                 >
                     {games?.map((game) => (
                         <LatestGame
@@ -71,17 +80,33 @@ export default function Home({ games, regular }) {
 
                 <Divider />
 
-                <h2 className="font-groches text-4xl text-white mb-7">Games</h2>
-                <div className="flex flex-wrap justify-center gap-5">
-                    {regular?.map((game) => (
-                        <Game
-                            key={game.id}
-                            id={game.id}
-                            img={game.thumbnail}
-                            name={game.title}
-                        />
-                    ))}
+                <h2 className="font-groches text-4xl sm:text-4xl text-white mb-7 text-center xmobile:text-left px-2">
+                    Games
+                </h2>
+                <div className="flex flex-wrap justify-center gap-5 px-1 mobile:px-2.5 sm:px-0 mb-5 xmobile:mb-0">
+                    {regular?.map(
+                        (game, index) =>
+                            index < count && (
+                                <Game
+                                    key={game.id}
+                                    id={game.id}
+                                    img={game.thumbnail}
+                                    name={game.title}
+                                />
+                            )
+                    )}
                 </div>
+
+                {count < regular.length && (
+                    <div className="w-full flex justify-center mt-8 mb-2">
+                        <button
+                            onClick={loadMore}
+                            className="w-max px-3 py-1 font-poppins font-semibold text-base bg-violet-700 text-white rounded-md hover:bg-violet-800 focus:bg-violet-800 transition-colors duration-150 ease-linear"
+                        >
+                            Load More
+                        </button>
+                    </div>
+                )}
             </div>
         </>
     );
@@ -96,7 +121,7 @@ export const getStaticProps = async () => {
     return {
         props: {
             games: [...data.slice(0, 31)],
-            regular: [...regular.data.slice(0, 41)],
+            regular: [...regular.data],
         },
         revalidate: 86400,
     };

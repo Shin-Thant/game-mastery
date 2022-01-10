@@ -1,6 +1,6 @@
 .gameContainer {
     --original: 530px;
-    --hover: 130px;
+    --hover: 120px;
     --height: 330px;
 
     background-image: linear-gradient(
@@ -67,9 +67,6 @@
     background-color: transparent;
     transition: all 250ms ease;
 }
-.requirements span {
-    transition: all 200ms ease;
-}
 .requirements:hover {
     background-color: rgba(255, 255, 255);
     box-shadow: 0 7px 14px rgba(0, 0, 0, 0.226);
@@ -78,6 +75,7 @@
 
 .short {
     width: 37%;
+    flex-direction: column;
 }
 .ssContainer {
     width: 62%;
@@ -100,8 +98,8 @@
 }
 
 .activeGameSs {
-    width: var(--original);
-    min-width: var(--original);
+    width: 100%;
+    min-width: 100%;
     height: 330px;
     transition: all 400ms ease;
 }
@@ -137,50 +135,328 @@
 }
 
 .description {
-    width: 75%;
+    width: 80%;
     margin: auto;
     border-radius: 10px;
     padding: 2.5rem;
     position: relative;
+    background-color: white;
+    transition: height 300ms ease;
+}
+
+.activeDescription {
+    transform: translateY(-10px);
+    opacity: 0;
+    animation: fadeIn 0.7s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.readMore {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: none;
+}
+
+.readLess {
+    display: none;
 }
 
 .description::before {
-    content: attr(data-text);
+    content: "";
     position: absolute;
-    top: 1.2rem;
-    right: 1.2rem;
-    padding: 2.5rem;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    border-radius: 10px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 0;
+    height: 40%;
+    background-image: linear-gradient(
+        to top,
+        white,
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0)
+    );
     z-index: 2;
     pointer-events: none;
-    transition: right 300ms ease, top 300ms ease, z-index 500ms ease;
 }
+
 .description::after {
     content: "";
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
+    top: -1.5rem;
+    right: -1.5rem;
+    width: 90%;
+    height: 90%;
     border: 1px solid black;
     border-radius: 10px;
     transition: width 200ms ease;
-    pointer-events: none;
-}
-
-.originalDesc {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.description:hover::before {
-    top: 0;
-    right: 0;
     z-index: -1;
+    pointer-events: none;
 }
-.description:hover::after {
-    width: 100%;
+
+.imagesAndContent {
+    flex-direction: row;
+}
+.ssContainer {
+    gap: 1rem;
+}
+
+@media screen and (max-width: 1300px) {
+    .gameImg {
+        width: 55%;
+    }
+    .content {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 1217px) {
+    .short {
+        width: 33%;
+    }
+    .ssContainer {
+        width: 66%;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .imagesAndContent {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+    .short {
+        width: 80%;
+        margin: auto;
+    }
+    .ssContainer {
+        width: 100%;
+    }
+    .activeGameSs {
+        width: 65%;
+        min-width: 65%;
+    }
+    .gameSs {
+        width: 15%;
+        min-width: 15%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .description {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .imagesAndContent {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    .short {
+        width: 35%;
+    }
+    .ssContainer {
+        width: 64%;
+    }
+    .activeGameSs {
+        width: 100%;
+        min-width: 100%;
+    }
+    .gameSs {
+        width: var(--hover);
+        min-width: var(--hover);
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .description {
+        width: 88%;
+        padding: 2rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .imagesAndContent {
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+    .short {
+        width: 80%;
+        margin: auto;
+        flex-direction: column-reverse;
+    }
+    .ssContainer {
+        width: 100%;
+    }
+    .activeGameSs {
+        width: 70%;
+        min-width: 70%;
+    }
+    .gameSs {
+        width: 13%;
+        min-width: 13%;
+    }
+
+    .ssContainer {
+        gap: 0.7rem;
+    }
+
+    .detailsHeader {
+        flex-direction: column;
+    }
+
+    .gameImg {
+        width: 65%;
+        margin: auto;
+    }
+    .content {
+        width: 70%;
+        margin: auto;
+    }
+
+    .description {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .gameImg {
+        width: 75%;
+    }
+    .content {
+        width: 80%;
+    }
+    .activeGameSs {
+        width: 100%;
+        min-width: 100%;
+    }
+    .gameSs {
+        width: calc(var(--hover) - 20px);
+        min-width: calc(var(--hover) - 20px);
+    }
+
+    .description {
+        padding: 1.5rem;
+    }
+
+    .description::after {
+        top: -1rem;
+        right: -1rem;
+    }
+}
+
+@media screen and (max-width: 670px) {
+    .requirements {
+        width: 45%;
+    }
+
+    .description {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .activeGameSs,
+    .gameSs {
+        height: 270px;
+    }
+
+    .gameImg {
+        width: 85%;
+    }
+    .content {
+        width: 85%;
+    }
+
+    .requirements {
+        width: 47%;
+    }
+
+    .description {
+        width: 98%;
+        padding: 1rem;
+        height: 380px;
+        overflow: hidden;
+    }
+    .description::before {
+        width: 100%;
+    }
+    .readMore {
+        display: block;
+    }
+    .readLess {
+        display: block;
+    }
+
+    .activeDescription.description {
+        height: max-content;
+        overflow: hidden;
+    }
+    .activeDescription.description::before {
+        width: 0;
+    }
+    .activeDescription .readMore {
+        display: none !important;
+    }
+
+    .description::after {
+        width: 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .short {
+        width: 100%;
+    }
+
+    .gameImg {
+        width: 90%;
+    }
+    .content {
+        width: 90%;
+    }
+
+    .gameSs {
+        width: calc(var(--hover) - 30px);
+        min-width: calc(var(--hover) - 30px);
+    }
+
+    .requirements {
+        width: 98%;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .gameImg {
+        width: 95%;
+    }
+    .content {
+        width: 90%;
+    }
+
+    .activeGameSs,
+    .gameSs {
+        height: 250px;
+    }
+
+    .description {
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .gameImg {
+        width: 98%;
+    }
+    .content {
+        width: 98%;
+    }
 }

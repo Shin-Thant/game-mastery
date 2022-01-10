@@ -8,3 +8,7 @@
     font-family: groches;
     src: url(../assets/fonts/GROCHES.ttf);
 }
+
+html {
+    scroll-behavior: smooth;
+}
