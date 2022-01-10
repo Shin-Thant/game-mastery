@@ -25,8 +25,6 @@ function gameDetails({ game }) {
         document.querySelector(".ssContainer").scrollLeft += 490;
     };
 
-    console.log(game?.minimum_system_requirements?.storage);
-
     return (
         <>
             <Head>
@@ -99,6 +97,7 @@ function gameDetails({ game }) {
                         <a
                             href={game.game_url}
                             target="_blank"
+                            rel="noreferrer"
                             className={`transition-colors duration-150 ease-in py-1.5 w-full block text-center font-groches text-2xl ${styles.playBtn}`}
                         >
                             Play

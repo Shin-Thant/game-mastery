@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
