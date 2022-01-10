@@ -5,7 +5,7 @@ import styles from "../styles/Search.module.css";
 import { FiSearch } from "react-icons/fi";
 import Game from "../components/Game";
 
-function search({ games }) {
+export default function search({ games }) {
     const [search, setSearch] = useState("");
 
     const [quantity, setQuantity] = useState(true);
@@ -108,8 +108,6 @@ function search({ games }) {
         </>
     );
 }
-
-export default search;
 
 export const getStaticProps = async () => {
     const { data } = await axios.get("https://www.freetogame.com/api/games");
