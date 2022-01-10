@@ -9,9 +9,9 @@ import { Form, FormikProvider, useFormik } from "formik";
 // import emailjs from "emailjs";
 
 function ContactPage() {
-    const [activeInput, setActiveInput] = useState(0);
+    const [activeInput, setActiveInput] = useState("0");
 
-    const [number, setNumber] = useState(0);
+    const [number, setNumber] = useState("0");
 
     useEffect(() => {
         setNumber(
@@ -139,7 +139,7 @@ function ContactPage() {
                                         />
                                         <input
                                             {...getFieldProps("name")}
-                                            onBlur={() => setActiveInput(0)}
+                                            onBlur={() => setActiveInput("0")}
                                             onFocus={() => setActiveInput(1)}
                                             type="text"
                                             className={`py-2 w-full text-gray-800 ${styles.inputs}`}
@@ -178,7 +178,7 @@ function ContactPage() {
                                         />
                                         <input
                                             {...getFieldProps("email")}
-                                            onBlur={() => setActiveInput(0)}
+                                            onBlur={() => setActiveInput("0")}
                                             onFocus={() => setActiveInput(2)}
                                             type="text"
                                             className={`py-2 w-full text-gray-800 ${styles.inputs}`}
@@ -213,7 +213,7 @@ function ContactPage() {
                                 >
                                     <textarea
                                         {...getFieldProps("message")}
-                                        onBlur={() => setActiveInput(0)}
+                                        onBlur={() => setActiveInput("0")}
                                         onFocus={() => setActiveInput(3)}
                                         type="text"
                                         rows="8"
