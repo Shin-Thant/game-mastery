@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -7,12 +8,12 @@
 
 @font-face {
     font-family: groches;
-    src: url("../public/fonts/GROCHES.ttf");
+    src: url("/fonts/GROCHES.ttf");
 }
 
-.font-groches {
+/* .font-groches {
     font-family: groches;
-}
+} */
 
 html {
     scroll-behavior: smooth;
