@@ -6,12 +6,21 @@ import { IoIosArrowUp } from "react-icons/io";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
+import Head from "next/head";
 
 function Layout({ children }) {
     return (
         <div
             className={`flex flex-col xtablet:flex-row gap-3 sm:gap-4 xtablet:gap-1 w-full p-2.5 sm:p-3 xtablet:p-0 ${styles.mainBg}`}
         >
+            <Head>
+                <link
+                    rel="preload"
+                    href="/fonts/GROCHES.ttf"
+                    as="font"
+                    crossOrigin=""
+                />
+            </Head>
             <Navbar />
             <button
                 onClick={() =>
