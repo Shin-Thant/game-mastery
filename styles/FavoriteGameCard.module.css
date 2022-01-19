@@ -1,0 +1,240 @@
+.cardContainer {
+    width: 43%;
+    padding: 1rem;
+    transition: all 250ms ease;
+    position: relative;
+}
+
+.favoriteBtn {
+    margin-right: 2rem;
+    transition: all 350ms ease;
+}
+
+.name {
+    font-size: 1.1rem;
+}
+
+.tags {
+    overflow: hidden;
+}
+.genre,
+.platform,
+.date {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.genre {
+    transform: translateY(-75px);
+    transition: transform 480ms ease, opacity 600ms ease;
+}
+.platform {
+    transform: translateY(-55px);
+    transition: transform 400ms ease, opacity 550ms ease;
+}
+.date {
+    transform: translateY(-35px);
+    transition: transform 250ms ease, opacity 500ms ease;
+}
+
+.cardContainer::before {
+    content: "";
+    position: absolute;
+    bottom: 13%;
+    left: 0;
+    width: 92%;
+    height: 76%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    z-index: -1;
+    transition: bottom 400ms ease, width 350ms ease, height 350ms ease,
+        box-shadow 450ms ease-in;
+}
+
+.cardContainer:hover::before {
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.cardContainer:hover .favoriteBtn {
+    margin-right: 0;
+}
+
+.cardContainer:hover .genre {
+    transform: translateY(0);
+    opacity: 1;
+}
+.cardContainer:hover .platform {
+    transform: translateY(0);
+    opacity: 1;
+}
+.cardContainer:hover .date {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.cardContainer:hover .tags {
+    margin-top: 0.5rem;
+}
+
+.imgContainer {
+    width: 100%;
+    transition: all 250ms ease;
+    margin-bottom: 0.9rem;
+    position: relative;
+}
+.imgContainer .img {
+    width: 100%;
+}
+
+.imgContainer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(11, 34, 138, 0.466);
+    transform: rotate(-70deg) scale(2) translateY(-120%);
+    transition: transform 400ms ease;
+    mix-blend-mode: darken;
+}
+.imgContainer:hover::before {
+    transform: rotate(-70deg) scale(2) translateY(0);
+}
+
+.detailsBtn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.3rem;
+    box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.2);
+    color: #8b2be2;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(3px, -3px);
+    transition: opacity 500ms ease, transform 400ms ease, font-size 200ms ease;
+}
+.imgContainer:hover .detailsBtn {
+    font-size: 1.5rem;
+}
+
+.cardContainer:hover .detailsBtn {
+    transform: translate(0, 0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+.cardContainer:hover .imgContainer {
+    box-shadow: 0 8px 13px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.2rem;
+}
+
+@media screen and (max-width: 1250px) {
+    .cardContainer {
+        width: 48%;
+    }
+
+    .cardContainer:hover .tags {
+        margin-top: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 1081px) {
+    .cardContainer {
+        width: 70%;
+    }
+
+    .cardContainer::before {
+        bottom: 11%;
+    }
+
+    .favoriteBtn {
+        margin-right: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 929px) {
+    .cardContainer {
+        width: 48%;
+    }
+    .favoriteBtn {
+        margin-right: 2rem;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .cardContainer {
+        width: 80%;
+    }
+
+    .tags {
+        margin-top: 0.7rem;
+    }
+
+    .favoriteBtn {
+        margin-right: 2.8rem;
+    }
+
+    .cardContainer:hover .tags {
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    .tags {
+        margin-top: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 682px) {
+    .favoriteBtn {
+        margin-right: 2.2rem;
+    }
+}
+
+@media screen and (max-width: 645px) {
+    .tags {
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .cardContainer {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .favoriteBtn {
+        margin-right: 2rem;
+    }
+
+    .cardContainer:hover .tags {
+        margin-top: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .cardContainer {
+        padding: 0.8rem;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .name {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 445px) {
+    .favoriteBtn {
+        margin-right: 1.5rem;
+    }
+}

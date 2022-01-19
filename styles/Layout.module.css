@@ -93,7 +93,7 @@
     }
 }
 
-@media screen and (max-width: 549px) {
+@media screen and (max-width: 599px) {
     .mobileUp {
         bottom: 5.5rem;
     }

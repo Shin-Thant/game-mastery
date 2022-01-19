@@ -7,9 +7,18 @@ import Head from "next/head";
 import Link from "next/link";
 import Game from "../components/Game";
 import { useState } from "react";
+import { useQuery } from "react-query";
+
+export const getAllGames = async () => {
+    const { data } = await axios.get("https://www.freetogame.com/api/games");
+
+    return data;
+};
 
 export default function Home({ games, regular }) {
     const [count, setCount] = useState(40);
+
+    // const {isLoading, error, data} = useQuery('allGames', getAllGames)
 
     const scrollLeft = () => {
         document.querySelector(".gamesContainer").scrollLeft -= 400;
@@ -58,6 +67,7 @@ export default function Home({ games, regular }) {
                             name={game.title}
                             genre={game.genre}
                             platform={game.platform}
+                            game={game}
                         />
                     ))}
                 </div>
@@ -79,7 +89,7 @@ export default function Home({ games, regular }) {
 
                 <Divider />
 
-                <h2 className="font-groches text-4xl sm:text-4xl text-white mb-7 text-center xmobile:text-left px-2">
+                <h2 className="font-groches text-4xl sm:text-4xl text-white mb-7 text-center lg:text-left px-2">
                     Games
                 </h2>
                 <div className="flex flex-wrap justify-center gap-5 px-1 mobile:px-2.5 sm:px-0 mb-5 xmobile:mb-0">
@@ -91,6 +101,9 @@ export default function Home({ games, regular }) {
                                     id={game.id}
                                     img={game.thumbnail}
                                     name={game.title}
+                                    genre={game.genre}
+                                    platform={game.platform}
+                                    game={game}
                                 />
                             )
                     )}

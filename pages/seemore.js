@@ -31,7 +31,9 @@ export default function SeeMorePage({ games }) {
                     title="game-mastery-home"
                 />
             </Head>
-            <div className={`w-full py-7 px-6 rounded-xl ${styles.seeMore}`}>
+            <div
+                className={`w-full py-7 px-3 mobile:px-4 xmobile:px-6 rounded-xl ${styles.seeMore}`}
+            >
                 <h2
                     onClick={goBack}
                     className="text-gray-100 hover:text-white cursor-pointer mb-10 w-max "
@@ -48,6 +50,7 @@ export default function SeeMorePage({ games }) {
                                     id={game.id}
                                     img={game.thumbnail}
                                     name={game.title}
+                                    game={game}
                                 />
                             )
                     )}

@@ -7,6 +7,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { BsTwitch, BsTwitter } from "react-icons/bs";
 import { RiInstagramFill } from "react-icons/ri";
 import { BiCopyright } from "react-icons/bi";
+import { AiFillHeart } from "react-icons/ai";
 import { useRouter } from "next/router";
 
 const Divider = () => {
@@ -26,6 +27,7 @@ function Navbar() {
         router.pathname === "/" && setActiveLink(1);
         router.pathname === "gameDetails/[id]" && setActiveLink(1);
         router.pathname === "/search" && setActiveLink(2);
+        router.pathname === "/favoriteGames" && setActiveLink(3);
     }, [router]);
 
     const goHome = () => {
@@ -40,71 +42,91 @@ function Navbar() {
         window.scrollTo(0, 0);
     };
 
+    const goFavorite = () => {
+        router.push("/favoriteGames");
+        setActiveLink(3);
+        window.scrollTo(0, 0);
+    };
+
     const goContact = () => {
         router.push("/contact");
-        setActiveLink(3);
+        setActiveLink(4);
         window.scrollTo(0, 0);
     };
 
     return (
         <div
             ref={navbar}
-            className={`flex flex-row xtablet:flex-col items-center justify-between xtablet:justify-center font-groches text-white py-1 px-5 xtablet:pl-2 xtablet:pr-1  ${styles.navbar} navbar`}
+            className={`flex flex-row xtablet:flex-col items-center justify-between font-groches text-white py-2 sm:py-3 smTablet:py-1 px-5 xtablet:pl-2 xtablet:pr-1  ${styles.navbar} navbar`}
         >
             <h2
                 className={`text-4xl xtablet:text-5xl font-medium text-center cursor-pointer h-max ${styles.logo}`}
             >
-                <span onClick={() => router.push("/")}>Game Mastery</span>
+                <span
+                    className="tracking-wide"
+                    onClick={() => router.push("/")}
+                >
+                    Game Mastery
+                </span>
             </h2>
 
             <Divider />
 
             <div
-                className={`rounded-full p-2 xmobile:px-0 flex flex-row gap-2 xmobile:gap-3 xtablet:gap-0 xtablet:flex-col z-10 shadow-xl xmobile:shadow-none ${styles.bottomNav}`}
+                className={`rounded-full p-2 smTablet:px-0 flex flex-row xtablet:flex-col z-10 shadow-xl smTablet:shadow-none ${styles.bottomNav}`}
             >
                 <div
                     onClick={goHome}
-                    className={`transition-all duration-200 ease-linear text-xl cursor-pointer flex flex-1 items-center justify-center sm:justify-between gap-2 sm:w-full rounded-full xmobile:rounded-xl ${
+                    className={`transition-all duration-200 ease-linear text-xl cursor-pointer flex flex-1 items-center justify-center sm:justify-between gap-2 sm:w-full rounded-full smTablet:rounded-xl ${
                         activeLink === 1
                             ? "bg-white text-purple"
                             : styles.navLink
                     } ${styles.links}`}
                 >
-                    <div className="hidden xmobile:block w-full xtablet:w-max text-center font-medium">
+                    <div className="hidden smTablet:block w-full xtablet:w-max text-center font-medium text-lg lg:text-xl">
                         Home
                     </div>
-                    <HiHome
-                        className={`text-xl xmobile:text-xl ${styles.icons}`}
-                    />
+                    <HiHome className={`text-xl ${styles.icons}`} />
                 </div>
                 <div
                     onClick={goSearch}
-                    className={`transition-all duration-200 ease-linear text-xl cursor-pointer flex flex-1 items-center justify-center sm:justify-between gap-2 sm:w-full rounded-full xmobile:rounded-xl ${
+                    className={`transition-all duration-200 ease-linear text-xl cursor-pointer flex flex-1 items-center justify-center sm:justify-between gap-2 sm:w-full rounded-full smTablet:rounded-xl ${
                         activeLink === 2
                             ? "bg-white text-purple"
                             : styles.navLink
                     } ${styles.links}`}
                 >
-                    <div className="hidden xmobile:block w-full xtablet:w-max text-center font-medium">
+                    <div className="hidden smTablet:block w-full xtablet:w-max text-center font-medium text-lg lg:text-xl">
                         Search
                     </div>
-                    <FiSearch
-                        className={`text-xl xmobile:text-xl ${styles.icons}`}
-                    />
+                    <FiSearch className={`text-xl ${styles.icons}`} />
                 </div>
                 <div
-                    onClick={goContact}
-                    className={`transition-all duration-200 ease-linear text-xl cursor-pointer flex flex-1 items-center justify-center sm:justify-between gap-2 sm:w-full rounded-full xmobile:rounded-xl ${
+                    onClick={goFavorite}
+                    className={`transition-all duration-200 ease-linear text-xl cursor-pointer flex flex-1 items-center justify-center sm:justify-between gap-2 sm:w-full rounded-full smTablet:rounded-xl ${
                         activeLink === 3
                             ? "bg-white text-purple"
                             : styles.navLink
                     } ${styles.links}`}
                 >
-                    <div className="hidden xmobile:block w-full xtablet:w-max text-center font-medium">
+                    <div className="hidden smTablet:block w-full xtablet:w-max text-center font-medium text-lg lg:text-xl">
+                        Favorite
+                    </div>
+                    <AiFillHeart className={`text-xl ${styles.icons}`} />
+                </div>
+                <div
+                    onClick={goContact}
+                    className={`transition-all duration-200 ease-linear text-xl cursor-pointer flex flex-1 items-center justify-center sm:justify-between gap-2 sm:w-full rounded-full smTablet:rounded-xl ${
+                        activeLink === 4
+                            ? "bg-white text-purple"
+                            : styles.navLink
+                    } ${styles.links}`}
+                >
+                    <div className="hidden smTablet:block w-full xtablet:w-max text-center font-medium text-lg lg:text-xl">
                         Contact
                     </div>
                     <MdPermContactCalendar
-                        className={`text-xl xmobile:text-xl ${styles.icons}`}
+                        className={`text-xl ${styles.icons}`}
                     />
                 </div>
             </div>

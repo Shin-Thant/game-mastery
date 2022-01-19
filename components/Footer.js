@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 function Footer() {
     return (
         <div
-            className={`${styles.footer} font-groches rounded-xl pt-5 pb-20 xmobile:py-5 text-purple`}
+            className={`${styles.footer} font-groches rounded-xl pt-5 pb-20 smTablet:py-5 text-purple`}
         >
             <div className="w-4/5 mx-auto flex flex-col items-center">
                 <div className="text-3xl sm:text-4xl mb-3">Follow Us On</div>

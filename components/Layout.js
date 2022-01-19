@@ -3,11 +3,14 @@ import Navbar from "./Navbar";
 import styles from "../styles/Layout.module.css";
 import Footer from "./Footer";
 import { IoIosArrowUp } from "react-icons/io";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useSelector } from "react-redux";
 
-function Layout(props) {
+function Layout({ children }) {
     return (
         <div
-            className={`flex flex-col xtablet:flex-row gap-3 sm:gap-4 xtablet:gap-1 w-full p-2 sm:p-3 xtablet:p-0 ${styles.mainBg}`}
+            className={`flex flex-col xtablet:flex-row gap-3 sm:gap-4 xtablet:gap-1 w-full p-2.5 sm:p-3 xtablet:p-0 ${styles.mainBg}`}
         >
             <Navbar />
             <button
@@ -32,7 +35,7 @@ function Layout(props) {
                 <div className="pointer-events-none" id="desti"></div>
                 {/* <div className={styles.circle1}></div> */}
                 {/* <div className={styles.circle2}></div> */}
-                {props.children}
+                {children}
             </div>
             <Footer />
         </div>

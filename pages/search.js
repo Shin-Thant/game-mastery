@@ -66,6 +66,9 @@ export default function search({ games }) {
                                             id={game.id}
                                             img={game.thumbnail}
                                             name={game.title}
+                                            genre={game.genre}
+                                            platform={game.platform}
+                                            game={game}
                                         />
                                     )
                             )

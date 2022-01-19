@@ -1,10 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/LatestGame.module.css";
 import { useRouter } from "next/router";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    addGame,
+    addNewGame,
+    removeGame,
+} from "../features/favoriteSlice/favoriteSlice";
 
-function LatestGame({ id, img, name, genre, platform }) {
+function LatestGame({ id, img, name, genre, platform, game }) {
+    const { favoriteGames } = useSelector((state) => state.favorite);
+
     const router = useRouter();
+
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        favoriteGames.find((item) => item?.id === id)
+            ? setIsFavorite(true)
+            : setIsFavorite(false);
+    }, [favoriteGames]);
+
+    const favoriteHandler = () => {
+        if (!isFavorite) {
+            dispatch(addNewGame(game));
+            setIsFavorite(true);
+        } else {
+            dispatch(removeGame(id));
+            setIsFavorite(false);
+        }
+    };
 
     return (
         <div className={`rounded-xl p-3 font-poppins ${styles.game}`}>
@@ -18,17 +47,33 @@ function LatestGame({ id, img, name, genre, platform }) {
                     View Details
                 </button>
             </div>
-            <div className="flex flex-col items-start gap-2 mt-3">
-                <h1
-                    className={`text-base xmobile:text-lg font-bold text-purple`}
-                >
-                    {name}
-                </h1>
+            <div className="flex flex-col items-start gap-4 mt-4">
+                <div className="flex items-center justify-between w-full gap-1">
+                    <h1
+                        className={`text-base xmobile:text-lg font-bold text-purple`}
+                        title={name}
+                    >
+                        {name?.length > 32 ? `${name.slice(0, 30)}...` : name}
+                    </h1>
+                    <div
+                        onClick={favoriteHandler}
+                        className={`bg-white rounded-full p-1.5 cursor-pointer`}
+                    >
+                        {isFavorite ? (
+                            <AiFillHeart className="text-xl text-purple" />
+                        ) : (
+                            <AiOutlineHeart className="text-xl text-purple" />
+                        )}
+                    </div>
+                </div>
                 <div className="w-full flex justify-between items-center font-bold text-sm gap-3">
                     <div className="w-max bg-white text-purple rounded-lg py-1.5 px-3">
                         {platform}
                     </div>
-                    <div className="w-max text-violet-700 px-3 py-1.5 border-2 border-violet-700 rounded-lg">
+                    <div
+                        className="w-max text-violet-700 px-3 py-1.5 border-2 border-violet-700 rounded-lg"
+                        // style={{ flex: "-1" }}
+                    >
                         {genre}
                     </div>
                 </div>

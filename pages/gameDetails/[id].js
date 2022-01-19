@@ -5,13 +5,41 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { HiArrowNarrowLeft } from "react-icons/hi";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    addNewGame,
+    removeGame,
+} from "../../features/favoriteSlice/favoriteSlice";
 
 export default function gameDetails({ game }) {
+    const { favoriteGames } = useSelector((state) => state.favorite);
+
+    const [isFavorite, setIsFavorite] = useState(false);
+
     const [activeImg, setActiveImg] = useState(0);
 
     const [readMore, setReadMore] = useState(false);
 
     const router = useRouter();
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        favoriteGames.find((item) => item?.id === game.id)
+            ? setIsFavorite(true)
+            : setIsFavorite(false);
+    }, [favoriteGames]);
+
+    const favoriteHandler = () => {
+        if (!isFavorite) {
+            dispatch(addNewGame(game));
+            setIsFavorite(true);
+        } else {
+            dispatch(removeGame(game.id));
+            setIsFavorite(false);
+        }
+    };
 
     const goBack = () => {
         router.back();
@@ -69,9 +97,12 @@ export default function gameDetails({ game }) {
                                 {game.platform}
                             </div>
                         </div>
-                        <h2 className="font-groches text-4xl md:text-5xl mb-3">
-                            {game.title}
-                        </h2>
+
+                        <div className="w-full flex items-center justify-start gap-3 mb-3">
+                            <h2 className="font-groches text-4xl md:text-5xl ">
+                                {game.title}
+                            </h2>
+                        </div>
 
                         <h2 className="font-bold text-sm font-poppins flex items-center gap-2 mb-3">
                             <span>Release Date</span> -
@@ -94,14 +125,26 @@ export default function gameDetails({ game }) {
                             </span>
                         </h2>
 
-                        <a
-                            href={game.game_url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className={`transition-colors duration-150 ease-in py-1.5 w-full block text-center font-groches text-2xl ${styles.playBtn}`}
-                        >
-                            Play
-                        </a>
+                        <div className="flex items-center gap-5 w-full">
+                            <button
+                                onClick={favoriteHandler}
+                                className="bg-white rounded-lg p-2 cursor-pointer"
+                            >
+                                {isFavorite ? (
+                                    <AiFillHeart className="text-xl text-purple" />
+                                ) : (
+                                    <AiOutlineHeart className="text-xl text-purple" />
+                                )}
+                            </button>
+                            <a
+                                href={game.game_url}
+                                target="_blank"
+                                rel="noreferrer"
+                                className={`transition-colors duration-150 ease-in py-1.5 w-full block text-center font-groches text-2xl ${styles.playBtn}`}
+                            >
+                                Play
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -277,7 +320,7 @@ export default function gameDetails({ game }) {
 
                         <span
                             onClick={() => setReadMore(true)}
-                            className={`text-purple font-poppins bg-white border-2 border-purple rounded px-2 py-1 ${styles.readMore}`}
+                            className={`text-purple font-poppins cursor-pointer bg-white border-2 border-purple rounded px-2 py-1 ${styles.readMore}`}
                         >
                             See More!
                         </span>

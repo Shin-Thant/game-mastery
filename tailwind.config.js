@@ -5,6 +5,8 @@ module.exports = {
         "./pages/search.js",
         "./pages/seemore.js",
         "./pages/gameDetails/[id].js",
+        "./pages/favoriteGames.js",
+        "./components/FavoriteGameCard.js",
         "./components/Navbar.js",
         "./components/Layout.js",
         "./components/LatestGame.js",
@@ -23,6 +25,7 @@ module.exports = {
             screens: {
                 screenshorts: "1100px",
                 xtablet: "930px",
+                smTablet: "600px",
                 xmobile: "550px",
                 mobile: "470px",
             },

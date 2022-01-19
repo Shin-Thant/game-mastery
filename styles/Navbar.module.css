@@ -5,10 +5,12 @@
 
 .logo {
     width: 100%;
+    line-height: 0.5rem;
 }
 
 .bottomNav {
     width: 100%;
+    gap: 0.8rem;
 }
 
 .icons {
@@ -25,11 +27,11 @@
 }
 
 .links {
-    padding: 0.7rem 1.1rem;
+    padding: 0.7rem 1rem;
 }
 
 .divider {
-    margin: 2.3rem 0;
+    margin: 1.5rem 0;
     height: 1px;
     background-color: rgb(228, 228, 228);
 }
@@ -48,10 +50,6 @@
 @media screen and (max-width: 1260px) {
     .navbar {
         width: 20%;
-    }
-
-    .divider {
-        margin: 1.8rem 0;
     }
 }
 
@@ -80,7 +78,7 @@
     }
 
     .bottomNav {
-        width: 50%;
+        width: 60%;
     }
 
     .links {
@@ -88,13 +86,26 @@
     }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 720px) {
     .bottomNav {
-        width: 55%;
+        width: 63%;
+        gap: 0.5rem;
     }
 }
 
-@media screen and (max-width: 549px) {
+@media screen and (max-width: 700px) {
+    .links {
+        padding: 0.5rem 0;
+    }
+}
+
+@media screen and (max-width: 670px) {
+    .bottomNav {
+        width: 58%;
+    }
+}
+
+@media screen and (max-width: 599px) {
     .navLink {
         width: max-content;
     }
