@@ -51,7 +51,7 @@ export default function Search({ games }) {
                 </div>
 
                 <div
-                    className="flex items-center sm:items-start justify-start sm:justify-center flex-col sm:flex-row gap-4 md:gap-5 lg:gap-7 xl:gap-4 flex-wrap pt-10"
+                    className="flex items-center sm:items-start justify-start sm:justify-center flex-col sm:flex-row gap-4 md:gap-3 flex-wrap pt-10"
                     style={{ minHeight: "80vh" }}
                 >
                     {search.length ? (

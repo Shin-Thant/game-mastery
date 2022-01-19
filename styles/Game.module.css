@@ -45,7 +45,7 @@
     transform: translateY(0);
 }
 
-@media screen and (max-width: 1394px) {
+@media screen and (max-width: 1340px) {
     .game {
         width: 40%;
     }
