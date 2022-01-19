@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: groches;
-    src: url(../assets/fonts/GROCHES.ttf);
+    src: url("../public/fonts/GROCHES.ttf");
 }
 
 html {
