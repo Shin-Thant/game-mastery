@@ -21,7 +21,7 @@ module.exports = {
                 purple: "#7200D6",
                 error: "#FF0008",
             },
-            fontFamily: { poppins: "Poppins", groches: "groches" },
+            fontFamily: { poppins: "Poppins" },
             screens: {
                 screenshorts: "1100px",
                 xtablet: "930px",
