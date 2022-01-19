@@ -5,7 +5,7 @@ import styles from "../styles/Search.module.css";
 import { FiSearch } from "react-icons/fi";
 import Game from "../components/Game";
 
-export default function search({ games }) {
+export default function Search({ games }) {
     const [search, setSearch] = useState("");
 
     const [quantity, setQuantity] = useState(true);

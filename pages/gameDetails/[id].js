@@ -12,7 +12,7 @@ import {
     removeGame,
 } from "../../features/favoriteSlice/favoriteSlice";
 
-export default function gameDetails({ game }) {
+export default function GameDetails({ game }) {
     const { favoriteGames } = useSelector((state) => state.favorite);
 
     const [isFavorite, setIsFavorite] = useState(false);
