@@ -57,17 +57,17 @@ function LatestGame({ id, img, name, genre, platform, game }) {
                     </h1>
                     <div
                         onClick={favoriteHandler}
-                        className={`bg-white rounded-full p-1.5 cursor-pointer`}
+                        className={`bg-purple rounded-full p-1.5 cursor-pointer text-white`}
                     >
                         {isFavorite ? (
-                            <AiFillHeart className="text-xl text-purple" />
+                            <AiFillHeart className="text-base" />
                         ) : (
-                            <AiOutlineHeart className="text-xl text-purple" />
+                            <AiOutlineHeart className="text-base" />
                         )}
                     </div>
                 </div>
                 <div className="w-full flex justify-between items-center font-bold text-sm gap-3">
-                    <div className="w-max bg-white text-purple rounded-lg py-1.5 px-3">
+                    <div className="w-max bg-purple text-white rounded-lg py-1.5 px-3">
                         {platform}
                     </div>
                     <div

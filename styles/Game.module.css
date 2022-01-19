@@ -1,5 +1,5 @@
 .game {
-    width: 30%;
+    width: 32%;
     transition: all 200ms ease;
 }
 .game:hover {
@@ -45,7 +45,13 @@
     transform: translateY(0);
 }
 
-@media screen and (max-width: 1235px) {
+@media screen and (max-width: 1394px) {
+    .game {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 1230px) {
     .game {
         width: 45%;
     }

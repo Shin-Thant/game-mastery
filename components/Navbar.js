@@ -57,7 +57,7 @@ function Navbar() {
     return (
         <div
             ref={navbar}
-            className={`flex flex-row xtablet:flex-col items-center justify-between font-groches text-white py-2 sm:py-3 smTablet:py-1 px-5 xtablet:pl-2 xtablet:pr-1  ${styles.navbar} navbar`}
+            className={`flex flex-row xtablet:flex-col items-center justify-between font-groches text-white py-5 sm:py-3 smTablet:py-1 px-5 xtablet:pl-2 xtablet:pr-1  ${styles.navbar} navbar`}
         >
             <h2
                 className={`text-4xl leading-3 xtablet:text-5xl font-medium text-center cursor-pointer h-max ${styles.logo}`}
