@@ -24,8 +24,7 @@ function FavoriteGamesPage() {
                 <h2 className="text-4xl font-groches text-white mb-8">
                     Favorite Games
                 </h2>
-
-                {favoriteGames?.length ? (
+                {typeof window !== undefined && favoriteGames?.length >= 1 ? (
                     <div
                         className={`w-full gap-x-5 gap-y-5 xtablet:gap-x-7  ${styles.favoriteContainer}`}
                     >
