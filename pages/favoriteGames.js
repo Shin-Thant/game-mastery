@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import styles from "../styles/FavoriteGames.module.css";
 import { useSelector } from "react-redux";
@@ -7,6 +7,15 @@ import { useRouter } from "next/router";
 
 function FavoriteGamesPage() {
     const { favoriteGames } = useSelector((state) => state.favorite);
+
+    // ==================================================
+    // * This bunch of code fixed the error
+    const [games, setGames] = useState([]);
+
+    useEffect(() => {
+        setGames(favoriteGames);
+    }, [favoriteGames]);
+    // ===================================================
 
     const router = useRouter();
 
@@ -24,11 +33,12 @@ function FavoriteGamesPage() {
                 <h2 className="text-4xl font-groches text-white mb-8">
                     Favorite Games
                 </h2>
-                {typeof window !== undefined && favoriteGames?.length >= 1 ? (
+
+                {typeof window !== undefined && games?.length >= 1 ? (
                     <div
                         className={`w-full gap-x-5 gap-y-5 xtablet:gap-x-7  ${styles.favoriteContainer}`}
                     >
-                        {favoriteGames?.map((game) => (
+                        {games?.map((game) => (
                             <FavoriteGameCard
                                 key={game?.id}
                                 id={game?.id}
