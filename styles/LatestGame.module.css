@@ -1,4 +1,6 @@
 .game {
+    scroll-snap-align: start;
+
     width: 380px;
     min-width: 380px;
     background-color: rgb(255, 255, 255);

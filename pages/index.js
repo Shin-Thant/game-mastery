@@ -57,7 +57,7 @@ export default function Home({ games, regular }) {
                 </div>
 
                 <div
-                    className={`flex overflow-auto px-2 py-5 xmobile:p-3 sm:p-4 sm:py-10 gap-5 relative gamesContainer ${styles.gamesContainer}`}
+                    className={`flex overflow-auto px-2 py-5 xmobile:p-3 sm:p-4 sm:py-10 gap-5 gamesContainer ${styles.gamesContainer}`}
                 >
                     {games?.map((game) => (
                         <LatestGame
