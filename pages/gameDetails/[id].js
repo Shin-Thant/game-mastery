@@ -340,6 +340,7 @@ export const getStaticProps = async (context) => {
 
     return {
         props: { game: data },
+        revalidate: 3600000,
     };
 };
 

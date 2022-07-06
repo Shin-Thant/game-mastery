@@ -80,6 +80,6 @@ export const getStaticProps = async () => {
         props: {
             games: data,
         },
-        revalidate: 86400,
+        // revalidate: 86400,
     };
 };

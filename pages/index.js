@@ -135,6 +135,6 @@ export const getStaticProps = async () => {
             games: [...data.slice(0, 31)],
             regular: [...regular.data],
         },
-        revalidate: 86400,
+        // revalidate: 3600000,
     };
 };
